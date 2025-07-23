@@ -5,15 +5,6 @@ import sys
 import time
 
 
-def is_prime(n: int, verbose: bool = False) -> bool:
-    if n < 2:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
-
-
 def solve(n: int, verbose: bool = False) -> int:
     """
     Implement the core Project Euler logic here.
@@ -28,21 +19,14 @@ def solve(n: int, verbose: bool = False) -> int:
     if verbose:
         print(f"Solving problem for n = {n}")
 
-    count = 0
-    i = 2
-    result = 2
-    while count < n:
-        if is_prime(i):
-            result = i
-            count += 1
-            if verbose:
-                print(f"{count}: {i}")
-        i += 1
+    sum_of_squares = sum([i**2 for i in range(1, n + 1)])
+    squared_sum = sum(i for i in range(1, n + 1)) ** 2
 
     if verbose:
-        print(f"Computed result: {result}")
+        print(f"Sum of squares: {sum_of_squares}")
+        print(f"Squared sum {squared_sum}")
 
-    return result
+    return squared_sum - sum_of_squares
 
 
 def main():
