@@ -21,14 +21,7 @@ def solve(n: int, verbose: bool = False) -> int:
     if verbose:
         print(f"Solving problem for n = {n}")
 
-    i = 1
-    result = 0
-    count = 0
-    while count < n:
-        if is_prime(i):
-            result = i
-            count += 1
-        i += 1
+    result = sum([i for i in range(1, n) if is_prime(i)])
 
     if verbose:
         print(f"Computed result: {result}")
